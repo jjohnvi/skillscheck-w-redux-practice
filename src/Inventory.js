@@ -48,6 +48,15 @@ class Inventory extends Component {
     });
   };
 
+  handleEdit = id => {
+    axios.put(`/api/inventory/${id}`).then(res => {
+      store.dispatch({
+        type: UPDATE_INVENTORY,
+        payload: res.data
+      });
+    });
+  };
+
   render() {
     const inventoryDisplay = this.state.inventory.map((val, index) => {
       return (
